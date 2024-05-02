@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lukanka.usuarios.models.Producto;
+import com.lukanka.usuarios.models.dto.ProductoDTO;
 import com.lukanka.usuarios.services.impl.ProductoServiceImpl;
 
 @RestController
@@ -21,7 +22,11 @@ public class ProductoController {
     private ProductoServiceImpl productoServiceImpl;
 
     @PostMapping("/crear")
-    public Producto crearProducto(@RequestBody Producto producto) {
+    public Producto crearProducto(@RequestBody ProductoDTO productoDTO) {
+        Producto producto = new Producto();
+        producto.setNombre(productoDTO.getNombre());
+        producto.setPrecio(productoDTO.getPrecio());
+        producto.setStock(productoDTO.getStock());
         return this.productoServiceImpl.crearProducto(producto);
     }
 

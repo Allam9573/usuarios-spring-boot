@@ -34,4 +34,9 @@ public class UsuarioController {
     public Usuario buscarUsuario(@PathVariable int id) {
         return this.usuarioServiceImpl.buscarUsuario(id);
     }
+
+    @GetMapping("/eliminar/{id}")
+    public Usuario eliminarUsuario(@PathVariable int id) {
+        return this.usuarioServiceImpl.eliminarUsuario(id);
+    }
 }
